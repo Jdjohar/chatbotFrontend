@@ -17,6 +17,9 @@ export default function Navbar() {
         <Link to="/upload" className={linkStyle('/upload')}>
           📤 Upload
         </Link>
+        <Link to="/widget" className={linkStyle('/widget')}>
+          ⚙️ Widget
+        </Link>
       </div>
     </nav>
   );

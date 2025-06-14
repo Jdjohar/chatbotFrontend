@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ChatbotApp from './ChatbotApp';
 import Upload from './Upload';
+import WidgetSettings from './WidgetSettings';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ChatbotApp />} />
           <Route path="/upload" element={<Upload />} />
+          <Route path="/widget" element={<WidgetSettings />} />
         </Routes>
       </div>
     </Router>
