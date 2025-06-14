@@ -18,7 +18,7 @@ export default function UploadData() {
     }
 
     try {
-      const res = await fetch('https://chatbotbackend-mpah.onrender.comupload', {
+      const res = await fetch('https://chatbotbackend-mpah.onrender.com/upload', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

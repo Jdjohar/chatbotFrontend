@@ -16,7 +16,7 @@ const WidgetSettings = () => {
 
   const fetchEmbedCode = async () => {
     try {
-      const res = await fetch(`https://chatbotbackend-mpah.onrender.comwidget/${userId}`);
+      const res = await fetch(`https://chatbotbackend-mpah.onrender.com/widget/${userId}`);
       const { embedCode } = await res.json();
       setEmbedCode(embedCode);
     } catch (err) {
@@ -26,7 +26,7 @@ const WidgetSettings = () => {
 
   const handleSave = async () => {
     try {
-      const res = await fetch('https://chatbotbackend-mpah.onrender.comwidget/settings', {
+      const res = await fetch('https://chatbotbackend-mpah.onrender.com/widget/settings', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

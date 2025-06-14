@@ -129,7 +129,7 @@ function ChatUI({ token, onLogout }) {
     useEffect(() => {
   const fetchChats = async () => {
     const token = localStorage.getItem('token');
-    const res = await fetch('https://chatbotbackend-mpah.onrender.comchats', {
+    const res = await fetch('https://chatbotbackend-mpah.onrender.com/chats', {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await res.json();
