@@ -26,6 +26,7 @@ export default function ChatbotApp() {
 
     function handleLogout() {
         localStorage.removeItem("token");
+        localStorage.removeItem("userid");
         setToken("");
         setView("auth");
     }
@@ -49,7 +50,7 @@ function AuthForm({ onSuccess }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const BASE_URL = "https://chatbotbackend-mpah.onrender.com";
+    const BASE_URL = "http://localhost:3000";
     const endpoint = mode === "login" ? `${BASE_URL}/login` : `${BASE_URL}/signup`;
 
     async function handleSubmit(e) {
@@ -62,6 +63,9 @@ function AuthForm({ onSuccess }) {
                 body: JSON.stringify({ username, password })
             });
             const data = await res.json();
+            console.log(data, "data");
+            localStorage.setItem("userid", data.userid)
+            
             if (!res.ok) throw new Error(data.error || "Something went wrong");
             if (mode === "login") {
                 onSuccess(data.token);
@@ -129,7 +133,7 @@ function ChatUI({ token, onLogout }) {
     useEffect(() => {
   const fetchChats = async () => {
     const token = localStorage.getItem('token');
-    const res = await fetch('https://chatbotbackend-mpah.onrender.com/chats', {
+    const res = await fetch('http://localhost:3000/chats', {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await res.json();
@@ -161,7 +165,7 @@ setMessages(
         setLoading(true);
         console.log("token:", token);
         console.log("userText:", userText);
-         const BASE_URL = "https://chatbotbackend-mpah.onrender.com";
+         const BASE_URL = "http://localhost:3000";
         try {
             const res = await fetch(`${BASE_URL}/chat`, {
                 method: "POST",

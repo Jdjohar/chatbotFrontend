@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AddDomainForm from './components/AddDomainForm'
 
 const WidgetSettings = () => {
   const [settings, setSettings] = useState({ theme: '#1e3a8a', position: 'bottom-right', avatar: '' });
@@ -7,7 +8,7 @@ const WidgetSettings = () => {
   const [message, setMessage] = useState('');
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
-  const userId = '684406c479f1ca7347878665'; // Replace with dynamic userId from auth
+  const userId = localStorage.getItem("userid") // Replace with dynamic userId from auth
 
   useEffect(() => {
     if (!token) navigate('/');
@@ -16,7 +17,7 @@ const WidgetSettings = () => {
 
   const fetchEmbedCode = async () => {
     try {
-      const res = await fetch(`https://chatbotbackend-mpah.onrender.com/widget/${userId}`);
+      const res = await fetch(`http://localhost:3000/widget/${userId}`);
       const { embedCode } = await res.json();
       setEmbedCode(embedCode);
     } catch (err) {
@@ -26,7 +27,7 @@ const WidgetSettings = () => {
 
   const handleSave = async () => {
     try {
-      const res = await fetch('https://chatbotbackend-mpah.onrender.com/widget/settings', {
+      const res = await fetch('http://localhost:3000/widget/settings', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,6 +82,8 @@ const WidgetSettings = () => {
       >
         Save Settings
       </button>
+
+      <AddDomainForm />
       {embedCode && (
         <div className="mt-4">
           <h3 className="text-lg mb-2">Embed Code</h3>
