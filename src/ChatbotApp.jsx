@@ -49,7 +49,7 @@ function AuthForm({ onSuccess }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const BASE_URL = "http://localhost:3000";
+    const BASE_URL = "https://chatbotbackend-mpah.onrender.com";
     const endpoint = mode === "login" ? `${BASE_URL}/login` : `${BASE_URL}/signup`;
 
     async function handleSubmit(e) {
@@ -161,7 +161,7 @@ setMessages(
         setLoading(true);
         console.log("token:", token);
         console.log("userText:", userText);
-         const BASE_URL = "http://localhost:3000";
+         const BASE_URL = "https://chatbotbackend-mpah.onrender.com";
         try {
             const res = await fetch(`${BASE_URL}/chat`, {
                 method: "POST",
